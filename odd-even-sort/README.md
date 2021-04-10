@@ -1,1 +1,1 @@
-#parallel algorithm: odd-even-sort by MPI
+# parallel algorithm: odd-even-sort by MPI
