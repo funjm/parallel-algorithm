@@ -1,14 +1,15 @@
 # parallel algorithm: odd-even-sort by MPI
-![image](https://user-images.githubusercontent.com/42513694/114254489-35405800-99e2-11eb-97a7-e30ca23cf544.png)
+![image](https://user-images.githubusercontent.com/42513694/114254489-35405800-99e2-11eb-97a7-e30ca23cf544.png)  
 第一眼看上去,奇偶排序像是冒泡排序的升级版,同时可以并行冒多个泡.
 对于n个数的奇偶排序,其收敛可以在n次排序后获得保证  
 - 感性认识如下:
 - - 对于如何一个数x,即是该x在最坏的位置(比如:x为最小值,却初始在末尾的情况),x在经历n-1次相邻交换后就可以到达有序的位置
 - - 奇偶排序中,可能会出现元素向有序位置相反方向移动的情况,但是never mind,这种情况说明有一个比它更小/大的数需要位移
 
-![image](https://user-images.githubusercontent.com/42513694/114254493-3ffaed00-99e2-11eb-82a4-4df0dd9b924f.png)
+![image](https://user-images.githubusercontent.com/42513694/114254493-3ffaed00-99e2-11eb-82a4-4df0dd9b924f.png)  
 得意于奇偶排序的性质,我们可以很容易得将它并行化:
 1. 将每个元素   看做  一组**有序**的元素
-2. 将两个相邻的元素进行冒泡交换  看做  两组已经**有序**的元素形成一个更大的**有序**数组
-而将两组已经**有序**的元素形成一个更大的**有序**数组是非常快速的
-![image](https://user-images.githubusercontent.com/42513694/114254465-09bd6d80-99e2-11eb-8b75-e0b713ec73c1.png)
+2. 将两个partner的元素进行冒泡交换  看做  两组已经**有序**的元素形成一个更大的**有序**数组
+使用归并排序而将两组已经**有序**的元素形成一个更大的**有序**数组是非常快速的
+
+需要根据轮数计算partner
